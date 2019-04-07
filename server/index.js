@@ -32,7 +32,7 @@ app.post("/api/login", authController.create);
 app.post("/api/verify/login", authController.login)
 
 
-// const otherController = require("./otherController.js")
-
+const dataController = require("./dataController.js")
+app.post("/api/newpassword", dataController.create)
 
 app.listen(3001, console.log("you are now connected on " + 3001));

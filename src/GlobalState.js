@@ -1,6 +1,4 @@
 import React,{Component,createContext} from "react";
-// import API from "./utils/API";
-// import axios from "axios";
 const {Provider, Consumer} = createContext()
 
 class GlobalState extends Component {
@@ -9,6 +7,7 @@ class GlobalState extends Component {
 		this.state = {
 			test: "I am the test",
 			username:"",
+			id:"",
 			authenticated: false,
 			adminAuthenticated: false,
 			authRes: null
@@ -28,6 +27,7 @@ class GlobalState extends Component {
 			this.setState({
 				authRes: authStatus,
 				username: authStatus.user.username,
+				id: authStatus.user._id,
 				authenticated: true,
 				adminAuthenticated:true
 			})
@@ -39,6 +39,7 @@ class GlobalState extends Component {
 			this.setState({
 				authRes: authStatus,
 				username: authStatus.user.username,
+				id: authStatus.user._id,
 				authenticated: true,
 			})
 

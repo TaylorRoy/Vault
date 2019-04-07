@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 import Form from "../Form/Form";
 import Input from "../Input/Input"
 import Button from "../Button/Button";
-// import { connect } from "react-redux";
-// import API from "../../utils/API";
 import axios from "axios";
 import Consumer from "../../GlobalState";
 
@@ -124,24 +122,12 @@ class Login extends Component {
   }
 };
 
-
-// const mapStateToProps = (state) => {
-//   return {
-//     username: state.username,
-//     password: state.password
-//   }
-// }
-
 export default props => (
   <Consumer>
     {(global) => {
+      console.log("consumer Login props", props)
+      console.log("consumer Login global", global)
       return <Login {...props} global={global} />
     }}
   </Consumer>
 )
-
-
-
-
-// Login;
-// export default connect(mapStateToProps)(Login);

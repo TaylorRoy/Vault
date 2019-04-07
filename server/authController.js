@@ -17,6 +17,7 @@ module.exports = {
 			});
 		// res.status(422).json(err));
 	},
+	
 
 	login: function (req, res) {
 		console.log("authController req.body", req.body)
