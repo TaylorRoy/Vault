@@ -7,7 +7,7 @@ module.exports = {
 	// 	res.status(200).send("sent");
 	// },
 	create: function (req, res) {
-        console.log("dataController req", req)
+        // console.log("dataController req", req)
 		console.log("in dataController create", req.body)
 		db.NewPassword
 			.create(req.body)

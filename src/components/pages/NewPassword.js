@@ -10,7 +10,8 @@ class NewPassword extends Component {
 
     state = {
         username: "",
-        password: ""
+        password: "",
+        userId: "empty"
     };
 
    handleInputChange = (event) => {
@@ -30,11 +31,11 @@ class NewPassword extends Component {
     createNewPassword = (event) => {
         event.preventDefault();
         console.log("in createNewPassword");
-        console.log("props", this.props.global)
+        console.log("createNewPassword state", this.state)
         axios.post("/api/newpassword", {
           username: this.state.username,
           password: this.state.password,
-          userId: this.props.global.id
+          userId: this.state.userId
         })
           .then(this.props.history.push('/newpassword'))
           .catch((err) => console.log("login error", err));
@@ -106,6 +107,13 @@ render() {
                 placeholder="Password"
                 name="password"
                 value={this.state.password}
+                onChange={this.handleInputChange}
+              />  
+            <Input
+                type= "text"
+                placeholder="userID"
+                name="userId"
+                value={this.state.userId}
                 onChange={this.handleInputChange}
               />  
 
