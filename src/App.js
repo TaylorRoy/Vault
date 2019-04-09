@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import About from "../src/components/pages/About";
-import List from "../src/components/pages/List";
+import PasswordList from "../src/components/pages/PasswordList";
 import Login from "../src/components/pages/Login";
 import NewPassword from "../src/components/pages/NewPassword";
 import ResetPassword from "../src/components/pages/ResetPassword";
@@ -45,7 +45,7 @@ const App = (props) => (
             <Route exact path="/" component={Login} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/newpassword" component={NewPassword} />
-            <Route exact path="/list" component={List} />
+            <Route exact path="/list" component={PasswordList} />
             <Route exact path="/about" component={About} />
             <Route exact path="/resetpassword" component={ResetPassword} />
           </div>

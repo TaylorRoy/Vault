@@ -111,9 +111,9 @@ render() {
               />  
             <Input
                 type= "text"
-                placeholder="userID"
+                placeholder="userId"
                 name="userId"
-                value={this.state.userId}
+                value={global.state.id}
                 onChange={this.handleInputChange}
               />  
 

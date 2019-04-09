@@ -34,5 +34,6 @@ app.post("/api/verify/login", authController.login)
 
 const dataController = require("./dataController.js")
 app.post("/api/newpassword", dataController.create)
+app.get("/api/loadpasswords", dataController.findAll)
 
 app.listen(3001, console.log("you are now connected on " + 3001));
