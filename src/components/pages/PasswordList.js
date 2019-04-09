@@ -3,6 +3,7 @@ import NavBar from "../NavBar/NavBar";
 import { List } from "../List";
 import { ListItem } from "../List";
 import Password from "../Password/Password"
+import DeleteBtn from "../DeleteBtn";
 import axios from "axios";
 
 class PasswordList extends Component {
@@ -25,8 +26,14 @@ class PasswordList extends Component {
       })
       )
       .catch(err => console.log(err));
-      console.log("leads", this.state.leads);
+    console.log("leads", this.state.leads);
   };
+
+  deletePassword = (id) => {
+    axios.delete("/api/deletepassword/" + id)
+    .then(res => this.loadPasswords)
+    .catch(err => console.log(err))
+  }
 
   //create PDF of justPassword section of the Sameday page
   // getPDF = () => {
@@ -71,7 +78,7 @@ class PasswordList extends Component {
                 // company={password.company}
                 />
 
-                {/* <DeleteBtn /> */}
+                <DeleteBtn onClick = {() => this.deletePassword(password._id)} />
               </ListItem>
             ))}
           </List>
