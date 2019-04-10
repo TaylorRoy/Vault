@@ -31,7 +31,7 @@ class PasswordList extends Component {
 
   deletePassword = (id) => {
     axios.delete("/api/deletepassword/" + id)
-    .then(res => this.loadPasswords)
+    .then(res => this.loadPasswords())
     .catch(err => console.log(err))
   }
 

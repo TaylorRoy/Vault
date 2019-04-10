@@ -11,7 +11,8 @@ class NewPassword extends Component {
     state = {
         username: "",
         password: "",
-        userId: "empty"
+        userId: "empty",
+        test: () => {this.setState({userId:global.userId})}
     };
 
    handleInputChange = (event) => {
@@ -37,7 +38,7 @@ class NewPassword extends Component {
           password: this.state.password,
           userId: this.state.userId
         })
-          .then(this.props.history.push('/newpassword'))
+          .then(this.setState({username:"", password:""}))
           .catch((err) => console.log("login error", err));
       };
  
