@@ -5,10 +5,13 @@ import { ListItem } from "../List";
 import Password from "../Password/Password"
 import DeleteBtn from "../DeleteBtn";
 import axios from "axios";
+import Consumer from "../../GlobalState";
 
 class PasswordList extends Component {
 
   state = {
+    userId: "empty",
+    test: () => {this.setState({userId: global.userId})},
     passwords: []
   }
 
@@ -20,6 +23,7 @@ class PasswordList extends Component {
   // Loads all passwordss and sets them to this.state.passwords
   loadPasswords = (res) => {
     console.log("in loadPasswords")
+    console.log("loadPasswords userId", this.state.userId)
     axios.get("/api/loadpasswords")
       .then(res => this.setState({
         passwords: res.data
@@ -90,4 +94,14 @@ class PasswordList extends Component {
   }
 };
 
-export default PasswordList;
+// export default PasswordList;
+
+export default props => (
+  <Consumer>
+    {(global) => {
+      console.log("consumer PasswordList props", props)
+      console.log("consumer PasswordList global", global)
+      return <PasswordList {...props} global={global} />
+    }}
+  </Consumer>
+)

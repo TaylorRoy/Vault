@@ -8,115 +8,114 @@ import Consumer from "../../GlobalState";
 
 class NewPassword extends Component {
 
-    state = {
-        username: "",
-        password: "",
-        userId: "empty",
-        test: () => {this.setState({userId:global.userId})}
-    };
+  state = {
+    username: "",
+    password: "",
+    userId: ""
+  };
 
-   handleInputChange = (event) => {
-        const { name, value } = event.target;
+  handleInputChange = (event) => {
+    const { name, value } = event.target;
 
-        this.setState({
-            [name]: value
-        });
-    };
+    this.setState({
+      [name]: value
+    });
+  };
 
-    handleClick = (event) => {
-        event.preventDefault();
-        alert(`Username${this.state.username}\nPassword ${this.state.password}`);
-        this.setState({username:"", password: ""});
-    };
+  // handleClick = (event) => {
+  //     event.preventDefault();
+  //     alert(`Username${this.state.username}\nPassword ${this.state.password}`);
+  //     this.setState({username:"", password: ""});
+  // };
 
-    createNewPassword = (event) => {
-        event.preventDefault();
-        console.log("in createNewPassword");
-        console.log("createNewPassword state", this.state)
-        axios.post("/api/newpassword", {
-          username: this.state.username,
-          password: this.state.password,
-          userId: this.state.userId
-        })
-          .then(this.setState({username:"", password:""}))
-          .catch((err) => console.log("login error", err));
-      };
- 
-//     render() {
-//      return(
-//         <div>
-//          <NavBar />
-//          <p>Welcome to new password page.</p>
-//          <p> username: {this.state.username} </p>
-//          <Form>
-            
-//             <Input
-//                 type= "text"
-//                 placeholder="Username"
-//                 name="username"
-//                 value={this.state.username}
-//                 onChange={this.handleInputChange}
-//               />
+  createNewPassword = (event) => {
+    event.preventDefault();
 
-//             <Input
-//                 type= "password"
-//                 placeholder="Password"
-//                 name="password"
-//                 value={this.state.password}
-//                 onChange={this.handleInputChange}
-//               />  
+    console.log("createNewPassword this.props.global", this.props.global.state)
+    axios.post("/api/newpassword", {
+      username: this.state.username,
+      password: this.state.password,
+      userId: this.props.global.state.id
+    })
+      .then(this.setState({ username: "", password: "" }))
+      .catch((err) => console.log("login error", err));
+  };
 
-//               {/* <select>
-//                   <opiton value="banking">Banking</opiton>
-//                   <opiton value="email">Email</opiton>
-//                   <opiton value="entertainment">Entertainment</opiton>
-//                   <opiton value="home">Home</opiton>
-//                   <opiton value="insurance">Insurance</opiton>
-//                   <opiton value="investments">Investments</opiton>
-//                   <opiton value="miscellaneous">Miscellaneous</opiton>
-//                   <opiton value="work">Work</opiton>
-//               </select>           */}
+  //     render() {
+  //      return(
+  //         <div>
+  //          <NavBar />
+  //          <p>Welcome to new password page.</p>
+  //          <p> username: {this.state.username} </p>
+  //          <Form>
 
-//              <Button type="submit" value="Submit" onClick= {this.createNewPassword}>Submit</Button>
-//          </Form>
-         
-//      </div>
-//      ) 
-//  };
-// }; 
+  //             <Input
+  //                 type= "text"
+  //                 placeholder="Username"
+  //                 name="username"
+  //                 value={this.state.username}
+  //                 onChange={this.handleInputChange}
+  //               />
 
-render() {
+  //             <Input
+  //                 type= "password"
+  //                 placeholder="Password"
+  //                 name="password"
+  //                 value={this.state.password}
+  //                 onChange={this.handleInputChange}
+  //               />  
+
+  //               {/* <select>
+  //                   <opiton value="banking">Banking</opiton>
+  //                   <opiton value="email">Email</opiton>
+  //                   <opiton value="entertainment">Entertainment</opiton>
+  //                   <opiton value="home">Home</opiton>
+  //                   <opiton value="insurance">Insurance</opiton>
+  //                   <opiton value="investments">Investments</opiton>
+  //                   <opiton value="miscellaneous">Miscellaneous</opiton>
+  //                   <opiton value="work">Work</opiton>
+  //               </select>           */}
+
+  //              <Button type="submit" value="Submit" onClick= {this.createNewPassword}>Submit</Button>
+  //          </Form>
+
+  //      </div>
+  //      ) 
+  //  };
+  // }; 
+
+  render() {
     return (
       <Consumer>
         {(global) => (
-           <div>
-         <NavBar />
-         <p>Welcome to new password page.</p>
-         <p> username: {this.state.username} </p>
-         <Form>
-            
-            <Input
-                type= "text"
+          <div>
+            <NavBar />
+            <p>Welcome to new password page.</p>
+            <p> username: {this.state.username} </p>
+            <Form>
+
+              <Input
+                type="text"
                 placeholder="Username"
                 name="username"
                 value={this.state.username}
                 onChange={this.handleInputChange}
               />
 
-            <Input
-                type= "password"
+              <Input
+                type="password"
                 placeholder="Password"
                 name="password"
                 value={this.state.password}
                 onChange={this.handleInputChange}
-              />  
-            <Input
-                type= "text"
+              />
+              <Input
+                type="text"
                 placeholder="userId"
                 name="userId"
-                value={global.state.id}
+                value={this.state.userId}
                 onChange={this.handleInputChange}
-              />  
+              />
 
               {/* <select>
                   <opiton value="banking">Banking</opiton>
@@ -129,19 +128,19 @@ render() {
                   <opiton value="work">Work</opiton>
               </select>           */}
 
-             <Button type="submit" value="Submit" onClick= {this.createNewPassword}>Submit</Button>
-         </Form>
-         <p>username:{global.state.username}</p>
-         <p>id: {global.state.id}</p>
-         
-     </div>
-    )}
+              <Button type="submit" value="Submit" onClick={this.createNewPassword}>Submit</Button>
+            </Form>
+            <p>username:{global.state.username}</p>
+            <p value={this.state.userId}>id: {global.state.id}</p>
+
+          </div>
+        )}
       </Consumer>
     );
   }
 }
 
-export default NewPassword;
+// export default NewPassword;
 
 // export default props => (
 //     <Consumer>
@@ -153,14 +152,14 @@ export default NewPassword;
 //     </Consumer>
 //   )
 
-//   export default props => (
-//     <Consumer>
-//       {(global) => {
-//           console.log("consumer newpassword props", props)
-//           console.log("consumer newpassword global", global)
-//         return <NewPassword {...props} global={global} />
-//       }}
-//     </Consumer>
-//   )
+  export default props => (
+    <Consumer>
+      {(global) => {
+          console.log("consumer newpassword props", props)
+          console.log("consumer newpassword global", global)
+        return <NewPassword {...props} global={global} />
+      }}
+    </Consumer>
+  )
 
 // export default NewPassword;

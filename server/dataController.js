@@ -19,7 +19,7 @@ module.exports = {
 		// res.status(422).json(err));
 	},
 	findAll: function(req, res) {
-		console.log("in dataController findAll", req)
+		console.log("in dataController findAll", req.body)
 		db.NewPassword
 		  .find(req.query)
 		  .sort({ date: -1 })
