@@ -1,10 +1,11 @@
+import axios from "axios"
 import React, { Component } from "react";
 import NavBar from "../NavBar/NavBar";
 import Form from "../Form/Form";
 import Button from "../Button/Button";
-import Input from "../Input/Input";
+import Input from "../Input/Input";;
 
-class ResetPassword extends Component {
+class CreateUser extends Component {
     state = {
         username: "",
         password: ""
@@ -22,6 +23,16 @@ class ResetPassword extends Component {
         event.preventDefault();
         alert(`Username${this.state.username}\nPassword ${this.state.password}`);
         this.setState({username:"", password: ""});
+    };
+
+    createUser =(event) => {
+        event.preventDefault();
+        axios.post("/api/createuser", {
+            username:this.state.username,
+            password: this.state.password
+        })
+        .then(res=> this.setState({username:"", password:""}))
+        .catch((err) => {console.log("createUser error", err)})
     };
 
     render(){
@@ -49,7 +60,7 @@ class ResetPassword extends Component {
                 onChange={this.handleInputChange}
               />            
 
-             <Button type="submit" value="Submit" onClick= {this.handleClick}>Submit</Button>
+             <Button type="submit" value="Submit" onClick= {this.createUser}>Submit</Button>
             
             </Form>
         </div>
@@ -57,4 +68,4 @@ class ResetPassword extends Component {
     };
 };
 
-export default ResetPassword;
+export default CreateUser;

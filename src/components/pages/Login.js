@@ -109,9 +109,9 @@ class Login extends Component {
           <Button type="submit" title="Test" onClick={this.login}>Login</Button>
 
           <Link
-            to="/resetpassword"
+            to="/createuser"
             className={
-              window.location.pathname === "/resetpassword" ? "nav-link active" : "nav-link"
+              window.location.pathname === "/createuser" ? "nav-link active" : "nav-link"
             }
           >
             Reset Password?

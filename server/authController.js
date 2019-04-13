@@ -7,7 +7,7 @@ module.exports = {
 	// 	res.status(200).send("sent");
 	// },
 	create: function (req, res) {
-		console.log("in create", req.body)
+		console.log("in authController create", req.body)
 		db.Login
 			.create(req.body)
 			.then(dbModel => res.json(dbModel))

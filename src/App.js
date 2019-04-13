@@ -4,7 +4,7 @@ import About from "../src/components/pages/About";
 import PasswordList from "../src/components/pages/PasswordList";
 import Login from "../src/components/pages/Login";
 import NewPassword from "../src/components/pages/NewPassword";
-import ResetPassword from "../src/components/pages/ResetPassword";
+import CreateUser from "../src/components/pages/CreateUser";
 import './reset.css';
 import './App.css';
 import Consumer, { GlobalState } from './GlobalState';
@@ -22,7 +22,7 @@ import Consumer, { GlobalState } from './GlobalState';
 //             <Route exact path="/newpassword" component={NewPassword} />
 //             <Route exact path="/list" component={List} />
 //             <Route exact path="/about" component={About} />
-//             <Route exact path="/resetpassword" component={ResetPassword} />
+//             <Route exact path="/CreateUser" component={CreateUser} />
 //           </div>
 //         </Router>
 
@@ -47,7 +47,7 @@ const App = (props) => (
             <Route exact path="/newpassword" component={NewPassword} />
             <Route exact path="/list" component={PasswordList} />
             <Route exact path="/about" component={About} />
-            <Route exact path="/resetpassword" component={ResetPassword} />
+            <Route exact path="/createuser" component={CreateUser} />
           </div>
         </Router>
   

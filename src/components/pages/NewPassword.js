@@ -109,13 +109,6 @@ class NewPassword extends Component {
                 value={this.state.password}
                 onChange={this.handleInputChange}
               />
-              <Input
-                type="text"
-                placeholder="userId"
-                name="userId"
-                value={this.state.userId}
-                onChange={this.handleInputChange}
-              />
 
               {/* <select>
                   <opiton value="banking">Banking</opiton>
