@@ -18,14 +18,22 @@ module.exports = {
 			});
 		// res.status(422).json(err));
 	},
-	findAll: function(req, res) {
-		console.log("in dataController findAll", req.body)
-		db.NewPassword
-		  .find(req.query)
-		  .sort({ date: -1 })
-		  .then(dbModel => res.json(dbModel))
-		  .catch(err => res.status(422).json(err));
-		},
+	// findAll: function(req, res) {
+	// 	console.log("in dataController findAll req.body", req.params.id)
+	// 	db.NewPassword
+	// 	  .find(req.query)
+	// 	  .sort({ date: -1 })
+	// 	  .then(dbModel => res.json(dbModel))
+	// 	  .catch(err => res.status(422).json(err));
+	// 	},
+		findAll: function(req, res) {
+			console.log("in dataController findAll req.params.id", req.params.id)
+			db.NewPassword
+				.find({userId:req.params.id})
+				.sort({ date: -1 })
+				.then(dbModel => res.json(dbModel))
+				.catch(err => res.status(422).json(err));
+			},
 		remove: function(req, res) {
 			console.log("remove req.params", req.params.id)
 			db.NewPassword

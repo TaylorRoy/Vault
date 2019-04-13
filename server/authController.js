@@ -44,8 +44,8 @@ module.exports = {
 					req.session.auth = true
 					req.session.admin = false
 
-					console.log("req.session", req.session)
-					console.log("data", data)
+					console.log("login authController req.session", req.session)
+					console.log("login authController data", data)
 
 					res.json(req.session)
 

@@ -10,8 +10,7 @@ import Consumer from "../../GlobalState";
 class PasswordList extends Component {
 
   state = {
-    userId: "empty",
-    test: () => {this.setState({userId: global.userId})},
+    userId: this.props.global.state.id,
     passwords: []
   }
 
@@ -20,13 +19,18 @@ class PasswordList extends Component {
     this.loadPasswords();
   }
 
+
+
   // Loads all passwordss and sets them to this.state.passwords
   loadPasswords = (res) => {
     console.log("in loadPasswords")
-    console.log("loadPasswords userId", this.state.userId)
-    axios.get("/api/loadpasswords")
+    console.log("loadPassword state", this.state)
+    console.log("loadPasswords userId", this.props.global.state)
+    let id = this.state.userId;
+    axios.get("/api/loadpasswords/" + id)
       .then(res => this.setState({
-        passwords: res.data
+        passwords: res.data,
+        userId: this.props.global.state.id
       })
       )
       .catch(err => console.log(err));
